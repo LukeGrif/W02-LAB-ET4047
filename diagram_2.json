@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "author": "Luke Griffin",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-nano", "id": "nano", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 161.9, "left": 57.4, "attrs": {} }
+  ],
+  "connections": [
+    [ "pot1:VCC", "nano:5V", "red", [ "v38.4", "h56.8", "v-163.2", "h-9.6" ] ],
+    [ "pot1:GND", "nano:GND.1", "black", [ "v67.2", "h105.6", "v-211.2", "h-48" ] ],
+    [ "pot1:SIG", "nano:A0", "green", [ "v19.2", "h-67.6" ] ]
+  ],
+  "dependencies": {}
+}

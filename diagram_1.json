@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "author": "Luke Griffin",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-nano", "id": "nano", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 121.2, "left": -25, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 147.95,
+      "left": 57.6,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "nano:13", "led1:A", "green", [ "v0" ] ],
+    [ "led1:C", "r1:1", "green", [ "v38.4", "h67.6" ] ],
+    [ "r1:2", "nano:GND.1", "green", [ "v0", "h27.6" ] ]
+  ],
+  "dependencies": {}
+}
