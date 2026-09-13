@@ -1,0 +1,784 @@
+{
+  "Config": {
+    "Build": {
+      "Board": "arduino:avr:nano:cpu=atmega328"
+    }
+  },
+  "Units": [
+    {
+      "*": [
+        {
+          "Name": "Arduino",
+          "Width": 256,
+          "Instance": {
+            "Digital": {
+              "*": [
+                {
+                  "+": "TArduinoAdditionalDigitalSerial0Channel"
+                },
+                {
+                  "+": "TArduinoAdditionalDigitalSerial0Channel"
+                },
+                {
+                  "+": "TArduinoAdditionalDigitalInterruptChannel"
+                },
+                {
+                  "+": "TArduinoBasicDigitalPWMInterruptChannel",
+                  "OutputPin": {
+                    "SinkPins": [
+                      {
+                        "ID": "__OpenWireRootUnit__.LED1.InputPin"
+                      }
+                    ]
+                  },
+                  "DigitalInputPin": {
+                    "SourcePin": {
+                      "ID": "__OpenWireRootUnit__.MultiSource2.OutputPins._Pin1",
+                      "Name": "__OpenWireRootUnit__.MultiSource2.OutputPins.Pin [1]"
+                    }
+                  }
+                },
+                {
+                  "+": "TArduinoAdditionalDigitalChannel",
+                  "OutputPin": {
+                    "SinkPins": [
+                      {
+                        "ID": "__OpenWireRootUnit__.Buzzer1.InputPin"
+                      }
+                    ]
+                  },
+                  "DigitalInputPin": {
+                    "SourcePin": {
+                      "ID": "__OpenWireRootUnit__.PulseGenerator.OutputPin"
+                    }
+                  }
+                },
+                {
+                  "+": "TArduinoBasicDigitalPWMChannel"
+                },
+                {
+                  "+": "TArduinoBasicDigitalPWMChannel"
+                },
+                {
+                  "+": "TArduinoAdditionalDigitalChannel"
+                },
+                {
+                  "+": "TArduinoAdditionalDigitalChannel"
+                },
+                {
+                  "DigitalInputPin": {
+                    "SourcePin": {
+                      "ID": "__OpenWireRootUnit__.UltrasonicRanger1.PingOutputPin"
+                    }
+                  },
+                  "+": "TArduinoBasicDigitalPWMChannel"
+                },
+                {
+                  "OutputPin": {
+                    "SinkPins": [
+                      {
+                        "ID": "__OpenWireRootUnit__.UltrasonicRanger1.EchoInputPin"
+                      }
+                    ]
+                  },
+                  "+": "TArduinoBasicDigitalPWMChannel"
+                },
+                {
+                  "+": "TArduinoBasicDigitalPWMSPI0Channel"
+                },
+                {
+                  "+": "TArduinoAdditionalDigitalSPI0Channel"
+                },
+                {
+                  "+": "TArduinoAdditionalDigitalSPI0Channel"
+                },
+                {
+                  "+": "TArduinoCombinedAnalogDigitalChannel"
+                },
+                {
+                  "+": "TArduinoCombinedAnalogDigitalChannel"
+                },
+                {
+                  "+": "TArduinoCombinedAnalogDigitalChannel"
+                },
+                {
+                  "+": "TArduinoCombinedAnalogDigitalChannel"
+                },
+                {
+                  "+": "TArduinoCombinedAnalogDigitalI2C0Channel"
+                },
+                {
+                  "+": "TArduinoCombinedAnalogDigitalI2C0Channel"
+                }
+              ]
+            },
+            "AnalogInput": {
+              "*": [
+                {
+                  "+": "TArduinoAnalogOptionalAsDigitalInputChannel"
+                },
+                {
+                  "+": "TArduinoAnalogOptionalAsDigitalInputChannel"
+                }
+              ]
+            },
+            "Modules": {
+              "*": [
+                {
+                  "+": "TArduinoEEPROMModule"
+                },
+                {
+                  "+": "TArduinoWatchdogTimerModule"
+                },
+                {
+                  "+": "TArduinoProcessor328Module"
+                },
+                {
+                  "+": "TArduino_AVR328_AnalogInput_Config"
+                }
+              ]
+            },
+            "Serial": {
+              "*": [
+                {
+                  "InputPin": {
+                    "SourcePins": [
+                      {
+                        "ID": "__OpenWireRootUnit__.MultiSource1.OutputPins._Pin0",
+                        "Name": "__OpenWireRootUnit__.MultiSource1.OutputPins.Pin [0]"
+                      }
+                    ]
+                  },
+                  "+": "TArduinoBreakHardwareSerial0"
+                }
+              ]
+            },
+            "I2CChannels": {
+              "*": [
+                {
+                  "+": "TArduinoI2C"
+                }
+              ]
+            },
+            "SPIChannels": {
+              "*": [
+                {
+                  "+": "TArduinoSPI"
+                }
+              ]
+            },
+            "BoardType": "Arduino Nano",
+            "+": "TArduinoBoard"
+          },
+          "X": 256,
+          "Height": 1088,
+          "Y": 256,
+          "Type": "Component"
+        },
+        {
+          "Name": "UltrasonicRanger1",
+          "Width": 176,
+          "Instance": {
+            "ClockInputPin": {
+              "SourcePins": [
+                {
+                  "ID": "__OpenWireRootUnit__.PulseGenerator1.OutputPin"
+                }
+              ]
+            },
+            "OutputPin": {
+              "SinkPins": [
+                {
+                  "ID": "__OpenWireRootUnit__.MultiSource1.InputPin"
+                }
+              ]
+            },
+            "PingOutputPin": {
+              "SinkPins": [
+                {
+                  "ID": "__OpenWireRootUnit__.Arduino.Digital._Item9.DigitalInputPin",
+                  "Name": "__OpenWireRootUnit__.Arduino.Digital.Digital[ 9 ].DigitalInputPin"
+                }
+              ]
+            },
+            "EchoInputPin": {
+              "SourcePin": {
+                "ID": "__OpenWireRootUnit__.Arduino.Digital._Item10.OutputPin",
+                "Name": "__OpenWireRootUnit__.Arduino.Digital.Digital[ 10 ].OutputPin"
+              }
+            },
+            "+": "TArduinoUltrasonicRanger"
+          },
+          "X": 640,
+          "Height": 80,
+          "Y": 784,
+          "Type": "Component"
+        },
+        {
+          "Name": "Compare1",
+          "Width": 96,
+          "Instance": {
+            "Value": 100,
+            "CompareType": "ctSmallerOrEqual",
+            "OutputPin": {
+              "SinkPins": [
+                {
+                  "ID": "__OpenWireRootUnit__.MultiSource2.InputPin"
+                }
+              ]
+            },
+            "InputPin": {
+              "SourcePin": {
+                "ID": "__OpenWireRootUnit__.MultiSource1.OutputPins._Pin1",
+                "Name": "__OpenWireRootUnit__.MultiSource1.OutputPins.Pin [1]"
+              }
+            },
+            "+": "TArduinoCompareValue"
+          },
+          "X": 992,
+          "Height": 48,
+          "Y": 832,
+          "Type": "Component"
+        },
+        {
+          "Name": "PulseGenerator1",
+          "Width": 144,
+          "Instance": {
+            "Frequency": 100,
+            "OutputPin": {
+              "SinkPins": [
+                {
+                  "ID": "__OpenWireRootUnit__.UltrasonicRanger1.ClockInputPin"
+                }
+              ]
+            },
+            "+": "TArduinoPulseGenerator"
+          },
+          "X": 576,
+          "Height": 48,
+          "Y": 560,
+          "Type": "Component"
+        },
+        {
+          "Name": "Buzzer1",
+          "Width": 96,
+          "Instance": {
+            "InputPin": {
+              "SourcePin": {
+                "ID": "__OpenWireRootUnit__.Arduino.Digital._Item4.OutputPin",
+                "Name": "__OpenWireRootUnit__.Arduino.Digital.Digital[ 4 ].OutputPin"
+              }
+            },
+            "+": "TArduinoBuzzer"
+          },
+          "X": 1200,
+          "Height": 48,
+          "Y": 336,
+          "Type": "Component"
+        },
+        {
+          "Name": "MultiSource1",
+          "Width": 112,
+          "Instance": {
+            "+": "TArduinoAnalogMultiSource",
+            "InputPin": {
+              "SourcePin": {
+                "ID": "__OpenWireRootUnit__.UltrasonicRanger1.OutputPin"
+              }
+            },
+            "OutputPins": {
+              "Form": "__OpenWireRootUnit__",
+              "Pins": [
+                {
+                  "Type": "ptSource",
+                  "SinkPins": [
+                    {
+                      "ID": "__OpenWireRootUnit__.Arduino.Serial._Item0.InputPin",
+                      "Name": "__OpenWireRootUnit__.Arduino.Serial.Item[ 0 ] (9600).InputPin"
+                    }
+                  ]
+                },
+                {
+                  "Type": "ptSource",
+                  "SinkPins": [
+                    {
+                      "ID": "__OpenWireRootUnit__.Compare1.InputPin"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "X": 944,
+          "Height": 80,
+          "Y": 544,
+          "Type": "Component"
+        },
+        {
+          "Name": "MultiSource2",
+          "Width": 112,
+          "Instance": {
+            "+": "TArduinoDigitalMultiSource",
+            "InputPin": {
+              "SourcePin": {
+                "ID": "__OpenWireRootUnit__.Compare1.OutputPin"
+              }
+            },
+            "OutputPins": {
+              "Form": "__OpenWireRootUnit__",
+              "Pins": [
+                {
+                  "Type": "ptSource",
+                  "SinkPins": [
+                    {
+                      "ID": "__OpenWireRootUnit__.PulseGenerator.EnabledInputPin",
+                      "Name": "__OpenWireRootUnit__.PulseGenerator.Enabled"
+                    }
+                  ]
+                },
+                {
+                  "Type": "ptSource",
+                  "SinkPins": [
+                    {
+                      "ID": "__OpenWireRootUnit__.Arduino.Digital._Item3.DigitalInputPin",
+                      "Name": "__OpenWireRootUnit__.Arduino.Digital.Digital[ 3 ].DigitalInputPin"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "X": 1232,
+          "Height": 80,
+          "Y": 736,
+          "Type": "Component"
+        },
+        {
+          "Name": "LED1",
+          "Width": 96,
+          "Instance": {
+            "InputPin": {
+              "SourcePin": {
+                "ID": "__OpenWireRootUnit__.Arduino.Digital._Item3.OutputPin",
+                "Name": "__OpenWireRootUnit__.Arduino.Digital.Digital[ 3 ].OutputPin"
+              }
+            },
+            "+": "TArduinoLED"
+          },
+          "X": 1424,
+          "Height": 48,
+          "Y": 544,
+          "Type": "Component"
+        },
+        {
+          "Name": "PulseGenerator",
+          "Width": 144,
+          "Instance": {
+            "InitialValue": true,
+            "Frequency": 1000,
+            "OutputPin": {
+              "SinkPins": [
+                {
+                  "ID": "__OpenWireRootUnit__.Arduino.Digital._Item4.DigitalInputPin",
+                  "Name": "__OpenWireRootUnit__.Arduino.Digital.Digital[ 4 ].DigitalInputPin"
+                }
+              ]
+            },
+            "@": [
+              {
+                "SourcePin": {
+                  "ID": "__OpenWireRootUnit__.MultiSource2.OutputPins._Pin0",
+                  "Name": "__OpenWireRootUnit__.MultiSource2.OutputPins.Pin [0]"
+                },
+                "@": "Enabled",
+                "Component": "PulseGenerator",
+                "PinName": "Enabled",
+                "+": "TOWBooleanSinkPinBinding"
+              }
+            ],
+            "+": "TArduinoPulseGenerator"
+          },
+          "X": 672,
+          "Height": 64,
+          "Y": 288,
+          "Type": "Component"
+        }
+      ],
+      "Name": "__OpenWireRootUnit__",
+      "Type": "Diagram",
+      "Links": [
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "PulseGenerator1.OutputPin",
+            "Y": 592,
+            "X": 720
+          },
+          "Name": "TOWELink1",
+          "End": {
+            "ID": "UltrasonicRanger1.ClockInputPin",
+            "Y": 816,
+            "X": 640
+          },
+          "Points": [
+            {
+              "Y": 592,
+              "X": 736
+            },
+            {
+              "Y": 688,
+              "X": 736
+            },
+            {
+              "Y": 688,
+              "X": 624
+            },
+            {
+              "Y": 816,
+              "X": 624
+            }
+          ]
+        },
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "Arduino.Digital._Item4.OutputPin",
+            "Y": 624,
+            "X": 512
+          },
+          "Name": "TOWELink2",
+          "End": {
+            "ID": "Buzzer1.InputPin",
+            "Y": 368,
+            "X": 1200
+          },
+          "Points": [
+            {
+              "Y": 624,
+              "X": 544
+            },
+            {
+              "Y": 448,
+              "X": 544
+            },
+            {
+              "Y": 448,
+              "X": 784
+            },
+            {
+              "Y": 368,
+              "X": 784
+            }
+          ]
+        },
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "MultiSource1.OutputPins._Pin0",
+            "Y": 592,
+            "X": 1056
+          },
+          "Name": "TOWELink3",
+          "End": {
+            "ID": "Arduino.Serial._Item0.InputPin",
+            "Y": 320,
+            "X": 256
+          },
+          "Points": [
+            {
+              "Y": 592,
+              "X": 1072
+            },
+            {
+              "Y": 160,
+              "X": 1072
+            },
+            {
+              "Y": 160,
+              "X": 240
+            },
+            {
+              "Y": 320,
+              "X": 240
+            }
+          ]
+        },
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "MultiSource1.OutputPins._Pin1",
+            "Y": 608,
+            "X": 1056
+          },
+          "Name": "TOWELink4",
+          "End": {
+            "ID": "Compare1.InputPin",
+            "Y": 864,
+            "X": 992
+          },
+          "Points": [
+            {
+              "Y": 608,
+              "X": 1072
+            },
+            {
+              "Y": 704,
+              "X": 1072
+            },
+            {
+              "Y": 704,
+              "X": 976
+            },
+            {
+              "Y": 864,
+              "X": 976
+            }
+          ]
+        },
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "UltrasonicRanger1.OutputPin",
+            "Y": 816,
+            "X": 816
+          },
+          "Name": "TOWELink5",
+          "End": {
+            "ID": "MultiSource1.InputPin",
+            "Y": 576,
+            "X": 944
+          },
+          "Points": [
+            {
+              "Y": 816,
+              "X": 832
+            },
+            {
+              "Y": 576,
+              "X": 832
+            }
+          ]
+        },
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "MultiSource2.OutputPins._Pin1",
+            "Y": 800,
+            "X": 1344
+          },
+          "Name": "TOWELink6",
+          "End": {
+            "ID": "Arduino.Digital._Item3.DigitalInputPin",
+            "Y": 576,
+            "X": 256
+          },
+          "Points": [
+            {
+              "Y": 800,
+              "X": 1376
+            },
+            {
+              "Y": 1536,
+              "X": 1376
+            },
+            {
+              "Y": 1536,
+              "X": 160
+            },
+            {
+              "Y": 576,
+              "X": 160
+            }
+          ]
+        },
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "Compare1.OutputPin",
+            "Y": 864,
+            "X": 1088
+          },
+          "Name": "TOWELink7",
+          "End": {
+            "ID": "MultiSource2.InputPin",
+            "Y": 768,
+            "X": 1232
+          },
+          "Points": [
+            {
+              "Y": 864,
+              "X": 1168
+            },
+            {
+              "Y": 768,
+              "X": 1168
+            }
+          ]
+        },
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "Arduino.Digital._Item3.OutputPin",
+            "Y": 576,
+            "X": 512
+          },
+          "Name": "TOWELink8",
+          "End": {
+            "ID": "LED1.InputPin",
+            "Y": 576,
+            "X": 1424
+          },
+          "Points": [
+            {
+              "Y": 576,
+              "X": 560
+            },
+            {
+              "Y": 464,
+              "X": 560
+            },
+            {
+              "Y": 464,
+              "X": 1136
+            },
+            {
+              "Y": 576,
+              "X": 1136
+            }
+          ]
+        },
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "PulseGenerator.OutputPin",
+            "Y": 320,
+            "X": 816
+          },
+          "Name": "TOWELink9",
+          "End": {
+            "ID": "Arduino.Digital._Item4.DigitalInputPin",
+            "Y": 624,
+            "X": 256
+          },
+          "Points": [
+            {
+              "Y": 320,
+              "X": 832
+            },
+            {
+              "Y": 176,
+              "X": 832
+            },
+            {
+              "Y": 176,
+              "X": 176
+            },
+            {
+              "Y": 624,
+              "X": 176
+            }
+          ]
+        },
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "MultiSource2.OutputPins._Pin0",
+            "Y": 784,
+            "X": 1344
+          },
+          "Name": "TOWELink10",
+          "End": {
+            "ID": "PulseGenerator.EnabledInputPin",
+            "Y": 320,
+            "X": 672
+          },
+          "Points": [
+            {
+              "Y": 784,
+              "X": 1360
+            },
+            {
+              "Y": 656,
+              "X": 1360
+            },
+            {
+              "Y": 656,
+              "X": 1152
+            },
+            {
+              "Y": 432,
+              "X": 1152
+            },
+            {
+              "Y": 432,
+              "X": 656
+            },
+            {
+              "Y": 320,
+              "X": 656
+            }
+          ]
+        },
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "Arduino.Digital._Item10.OutputPin",
+            "Y": 864,
+            "X": 512
+          },
+          "Name": "TOWELink11",
+          "End": {
+            "ID": "UltrasonicRanger1.EchoInputPin",
+            "Y": 832,
+            "X": 640
+          },
+          "Points": [
+            {
+              "Y": 864,
+              "X": 544
+            },
+            {
+              "Y": 832,
+              "X": 544
+            }
+          ]
+        },
+        {
+          "Routed": true,
+          "Begin": {
+            "ID": "UltrasonicRanger1.PingOutputPin",
+            "Y": 848,
+            "X": 816
+          },
+          "Name": "TOWELink12",
+          "End": {
+            "ID": "Arduino.Digital._Item9.DigitalInputPin",
+            "Y": 816,
+            "X": 256
+          },
+          "Points": [
+            {
+              "Y": 848,
+              "X": 832
+            },
+            {
+              "Y": 1424,
+              "X": 832
+            },
+            {
+              "Y": 1424,
+              "X": 176
+            },
+            {
+              "Y": 816,
+              "X": 176
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Version": "2",
+  "Content": "OpenWire Diagram",
+  "Product": "Visuino Pro - Visual Arduino Programming"
+}
