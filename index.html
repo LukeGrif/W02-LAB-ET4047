@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab 2 — Ultrasonic Alarm (Visuino + Wokwi)</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+  /* Pages flow left-to-right and wrap: 1 column when narrow, 2 side by side when wide */
+  #viewer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+  #viewer canvas {
+    display: block;
+    margin: 0;       /* no breaks between pages */
+    padding: 0;
+    background: #ffffff;
+  }
+  #status {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #888;
+    text-align: center;
+    padding: 40px 20px;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+  <div id="viewer"><div id="status">Loading lab documents…</div></div>
+
+  <script type="module">
+    import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.mjs";
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.worker.min.mjs";
+
+    // Documents render one after another, in this order.
+    const PDF_URLS = [
+      "W02_LAB_Arduino_IDE_Installation_Guide.pdf",
+      "W02_avrdude_Setup_and_Execution.pdf",
+      "W02_Wokwi_Beginners_Guide.pdf",
+      "W02_LAB_UltrasonicAlarm_Task.pdf",
+    ];
+    const MAX_PAGE_WIDTH = 850;    // a page won't render wider than this
+    const TWO_UP_MIN = 960;        // window must be at least this wide to show 2 pages
+    const viewer = document.getElementById("viewer");
+    let pdfDocs = [];
+
+    function layout() {
+      const columns = window.innerWidth >= TWO_UP_MIN ? 2 : 1;
+      const pageWidth = Math.min(Math.floor(window.innerWidth / columns), MAX_PAGE_WIDTH);
+      // lock the row to exactly `columns` pages wide so wrapping is precise
+      viewer.style.width = (columns * pageWidth) + "px";
+      return pageWidth;
+    }
+
+    async function render() {
+      const width = layout();
+      const dpr = window.devicePixelRatio || 1;
+      viewer.innerHTML = "";
+      for (const pdfDoc of pdfDocs) {
+        for (let n = 1; n <= pdfDoc.numPages; n++) {
+          const page = await pdfDoc.getPage(n);
+          const base = page.getViewport({ scale: 1 });
+          const scale = width / base.width;
+          const viewport = page.getViewport({ scale: scale * dpr });
+
+          const canvas = document.createElement("canvas");
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = width + "px";
+          canvas.style.height = (viewport.height / dpr) + "px";
+          viewer.appendChild(canvas);
+
+          await page.render({
+            canvasContext: canvas.getContext("2d"),
+            viewport,
+          }).promise;
+        }
+      }
+    }
+
+    // Re-render on resize / zoom (debounced) so pages stay sharp and re-flow
+    let t;
+    window.addEventListener("resize", () => {
+      clearTimeout(t);
+      t = setTimeout(render, 200);
+    });
+
+    (async () => {
+      try {
+        pdfDocs = await Promise.all(
+          PDF_URLS.map((url) => pdfjsLib.getDocument(url).promise)
+        );
+        await render();
+      } catch (e) {
+        document.getElementById("status").textContent =
+          "Could not load the documents. Please refresh the page.";
+        console.error(e);
+      }
+    })();
+  </script>
+</body>
+</html>
